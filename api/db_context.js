@@ -1,11 +1,10 @@
 const pgp = require('pg-promise')(/* options */);
-const db = pgp(`postgres://${process.env.USER}:${process.env.PASSWORD}@localhost:${process.env.dbport || '5432'}/${process.env.DATABASE}`);
+const db = pgp(`postgres://${process.env.USER}:${process.env.PASSWORD}@localhost:${process.env.DBPORT || '5432'}/${process.env.DATABASE}`);
 
 
 async function hello(keyword = 'elis') {
 
-    let data = await db.any(`SELECT * FROM customer WHERE first_name LIKE '${keyword}%'`);
-  
+    let data = await db.many(`SELECT * FROM customer`);
     return data;
   }
   
