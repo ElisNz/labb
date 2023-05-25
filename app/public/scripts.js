@@ -5,19 +5,45 @@ async function search() {
     let result = await(await fetch(`http://localhost:3001/search/${query}`)).json();
     let authors = '';
     for(let i of result.authors) {
-        console.log(i);
         authors += `${i.last_name}, ${i.first_name}`
     }
     let titles = ''
     for(let i of result.titles) {
-        console.log(i);
         titles += `${i.title} | Remaining: ${i.stock} | Borrowed: ${i.stock - i.inventory}<HTML><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</HTML>`
     }
-    console.log(authors);
-    console.log(titles);
     document.getElementById('resultbox').innerHTML = `
         Authors: ${authors}
             <br>
         Titles: ${titles}
     `;
+};
+
+function register() {
+    /* const addBookBtn = document.querySelector('#addBookBtn'); */
+    const author = document.querySelector('#author');
+    const title = document.querySelector('#title');
+    const genre = document.querySelector('#genre');
+    const year = document.querySelector('#year');
+    const amount = document.querySelector('#amount');
+
+
+      
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          author: author.value,
+          title: title.value,
+          genre: genre.value,
+          year: year.value,
+          inventory: amount.value,
+        })
+      };
+      fetch('http://localhost:3001/register', options)
+      .then(response => console.log(response))
+      .catch(err => {
+        console.error(err)
+      })
 };

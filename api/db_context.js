@@ -18,8 +18,8 @@ async function registerOneBook(book) {
     book.genre = genreId.genre_id;
     const modelToInsert = new model.book(book);
     return await db.none(
-      "INSERT INTO book (title, author_id, genre_id, stock, inventory)" + 
-      "VALUES ($1, $2, $3, $4, $5, $6)", [modelToInsert.title, modelToInsert.year, modelToInsert.author_id, modelToInsert.genre_id, modelToInsert.stock, modelToInsert.inventory]
+      "INSERT INTO book (title, author_id, genre_id, stock, inventory, year)" + 
+      "VALUES ($1, $2, $3, $4, $5, $6)", [modelToInsert.title, modelToInsert.author_id, modelToInsert.genre_id, modelToInsert.stock, modelToInsert.inventory, modelToInsert.year]
     );
   }
 async function deleteOneBook(id) {

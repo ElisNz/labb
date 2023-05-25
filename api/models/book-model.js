@@ -2,10 +2,10 @@
 class Book {
     constructor(object) {
         this.title = object.title;
-        this.year = object.year;
+        this.year = parseInt(object.year);
         this.genre_id = object.genre;
         this.author_id = object.author;
-        this.stock = object.stock;
+        this.stock = object.inventory; //set to initial same as inventory (before rentals)
         this.inventory = object.inventory;
     }
 }

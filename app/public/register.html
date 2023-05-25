@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -17,10 +13,34 @@
         <li><a href="../index.html">Hem</a></li>
         <li><a href="./search.html">Sök</a></li>
         <li class="active"><a href="./register.html">Registrera</a></li>
-        <li><a href="">Chatt</a></li>
+        <li><a href="">Chat</a></li>
       </ul>
-
+      <form action="" class="add-form">
+        <div class="form-input">
+          <label for="author">Efternamn: </label>
+          <input id="author" type="text" name="author" placeholder="Fyll i författare..." autofocus>
+        </div>
+        <div class="form-input">
+          <label for="title">Titel: </label>
+          <input id="title" type="text" name="title" placeholder="Skriv in titel...">
+        </div>
+        <div class="form-input">
+          <label for="genre">Genre: </label>
+          <input id="genre" type="text" name="genre" placeholder="Skriv in titel...">
+        </div>
+        <div class="form-input">
+          <label for="year">År: </label>
+          <input id="year" type="text" name="year" placeholder="Skriv in titel...">
+        </div>
+        <div class="form-input">
+          <label for="amount">Lagerantal: </label>
+          <input id="amount" type="number" name="amount" placeholder="Skriv in titel...">
+        </div>
+        <div class="form-input-btn">
+          <button id="addBookBtn" type="button" onclick="register()">Lägg till bok</button>
+        </div>
+      </form>
         
-        <script src="scripts.js" async defer></script>
+      <script src="scripts.js" async defer></script>
     </body>
 </html>

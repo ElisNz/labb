@@ -56,3 +56,105 @@ ul {
     width: 40%;
     flex-direction: column;
   }
+
+  #registerForm {
+    margin-top: 10px;
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+  }
+
+  #registerInputs > input {
+    gap: 10px;
+  }
+
+  body {
+    padding: 1rem;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .body-container {
+    width: 34rem;
+  }
+  
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+    padding: .5rem;
+  }
+  
+  .nav-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: .3rem 2rem;
+    border: 1px black solid;
+    border-radius: 2rem;
+  }
+  
+  .nav-li {
+    display: inline;
+    padding: .3rem;
+  }
+  
+  .main-container {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .radio-input {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+  }
+  
+  .catalogue-container {
+    border: 1px solid black;
+    padding: .3rem;
+    width: 24rem;
+  }
+  
+  #searchResults {
+    margin: 0;
+    padding: .3rem;
+    list-style-type: none;
+  }
+  
+  .catalogue-result {
+    margin-bottom: 1.3rem;
+    border-bottom: 1px solid gray;
+  }
+  .add-form {
+    border: 1px solid black;
+    padding: .3rem;
+    width: 24rem;
+  }
+  
+  .form-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .3rem;
+    width: 90%;
+    gap: .5rem;
+  }
+  
+  .form-input-btn {
+    display: flex;
+    width: 90%;
+    justify-content: flex-end;
+  }
+  
+  #addBookBtn {
+    margin-top: .3rem;
+    padding: .3rem 1rem;
+  }
