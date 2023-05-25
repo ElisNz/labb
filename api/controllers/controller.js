@@ -39,7 +39,7 @@ async function search(req, res) {
 async function updateBook(req, res) {
     try {
         const data = await updateOneBook(req.body);
-        res.status(200).send('Successfully removed book');
+        res.status(200).send('Successfully updated book');
     } catch (err) {
         res.status(500).send(err);
     }   

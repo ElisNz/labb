@@ -12,6 +12,8 @@ router.get('/search/:query', search);
 router.post('/register', registerBook);
 // Update a book
 router.put('/update', updateBook);
+// Create a new rental
+router.post('/borrow')
 // Delete a book
 router.delete('/delete', deleteBook);
 
