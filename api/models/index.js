@@ -1,3 +1,7 @@
 /* require module models and summarize */
+const model = {};
 
-module.exports = {};
+model.book = require('./book-model');
+model.rental = require('./rental-model');
+
+module.exports = { model };
