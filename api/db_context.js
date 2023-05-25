@@ -22,8 +22,18 @@ async function registerOneBook(book) {
       "VALUES ($1, $2, $3, $4, $5, $6)", [modelToInsert.title, modelToInsert.author_id, modelToInsert.genre_id, modelToInsert.stock, modelToInsert.inventory, modelToInsert.year]
     );
   }
-async function deleteOneBook(id) {
-    return await db.none(`DELETE FROM book WHERE book_id='${id}'`);
+async function deleteOneBook(title) {
+    const id = await db.any(`SELECT book_id FROM book WHERE title = '${title}'`);
+    if(id.length === 0) { throw 'No books with that name were found'; }
+    for (let { book_id } of id) {
+      let check = await db.any(`SELECT rental_id FROM rental WHERE book_id=${book_id}`);
+      if(check.length > 0) { 
+        throw { message: 'constraint encountered. Could not delete' }
+      } else {
+        db.none(`DELETE FROM book WHERE book_id=${book_id}`);
+      }
+    }
+    return ('deleted all books with title:' + title);
   }
 async function searchAuthorOrTitle(query) {
     let authors = await db.any(`SELECT * FROM author WHERE first_name LIKE'%${query}%' OR last_name LIKE'%${query}%'`);

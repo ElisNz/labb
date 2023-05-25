@@ -47,3 +47,17 @@ function register() {
         console.error(err)
       })
 };
+
+async function remove() {
+    console.log('called');
+    const title = document.querySelector('#book_title');
+    const options = {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ title: title.value })
+      };
+    await fetch('http://localhost:3001/delete', options)
+        .catch(err => { console.error(err) })
+};

@@ -21,7 +21,7 @@ async function registerBook(req, res) {
 };
 async function deleteBook(req, res) {
     try {
-        const data = await deleteOneBook(req.body.id);
+        const data = await deleteOneBook(req.body.title);
         res.status(200).send('Successfully removed book');
     } catch (err) {
         res.status(500).send(err);
