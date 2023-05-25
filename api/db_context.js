@@ -30,11 +30,25 @@ async function searchAuthorOrTitle(query) {
     let titles = await db.any(`SELECT * FROM book WHERE title LIKE'%${query}%'`);
     return { authors, titles };
   }  
+async function updateOneBook(update) {
+    const id = update.id;
+    delete update.id;
+    for (let [key, value] of Object.entries(update)) {
+      if (typeof value == 'string') { value = `'${value}'`};
+      db.none(`
+        UPDATE book
+        SET ${key} = ${value}
+        WHERE book_id = '${id}'
+      `);
+    }
+    return; 
+  }
 
 module.exports = {
     hello,
     getAllBooks,
     registerOneBook,
     deleteOneBook,
-    searchAuthorOrTitle
+    searchAuthorOrTitle,
+    updateOneBook
 };

@@ -1,4 +1,4 @@
-const { hello, getAllBooks, registerOneBook, deleteOneBook, searchAuthorOrTitle } = require('../db_context');
+const { hello, getAllBooks, registerOneBook, deleteOneBook, searchAuthorOrTitle, updateOneBook } = require('../db_context');
 
 async function getCustomer(req, res) {
     res.status(200).send(await hello());
@@ -36,11 +36,20 @@ async function search(req, res) {
         res.status(500).send(err);
     }  
 };
+async function updateBook(req, res) {
+    try {
+        const data = await updateOneBook(req.body);
+        res.status(200).send('Successfully removed book');
+    } catch (err) {
+        res.status(500).send(err);
+    }   
+};
 
 module.exports = {
     getCustomer,
     getBooks,
     registerBook,
     deleteBook,
-    search
+    search,
+    updateBook
 }

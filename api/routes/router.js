@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getCustomer, getBooks, registerBook, deleteBook, search } = require('../controllers/controller');
+const { getCustomer, getBooks, registerBook, deleteBook, search, updateBook } = require('../controllers/controller');
 
 // Get sample user
 router.get('/example', getCustomer);
@@ -10,8 +10,8 @@ router.get('/all', getBooks);
 router.get('/search/:query', search);
 // Register new book
 router.post('/register', registerBook);
-// Register new book
-router.put('/update');
+// Update a book
+router.put('/update', updateBook);
 // Delete a book
 router.delete('/delete', deleteBook);
 
