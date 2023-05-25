@@ -30,3 +30,29 @@ ul {
   .active {
     background-color: #04AA6D;
   }
+
+  button {
+    margin-top: 10px;
+    height: 50px;
+  }
+
+  #searchbox {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+    justify-content: space-between;
+  }
+
+  #resultbox {
+    display: flex;
+    height: 50%;
+    width: 50%;
+    border: solid #111 1px;
+  }
+
+  #inputs {
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+  }
