@@ -19,16 +19,22 @@ async function registerOneBook(book) {
     const modelToInsert = new model.book(book);
     return await db.none(
       "INSERT INTO book (title, author_id, genre_id, stock, inventory)" + 
-      "VALUES ($1, $2, $3, $4, $5)", [modelToInsert.title, modelToInsert.author_id, modelToInsert.genre_id, modelToInsert.stock, modelToInsert.inventory]
+      "VALUES ($1, $2, $3, $4, $5, $6)", [modelToInsert.title, modelToInsert.year, modelToInsert.author_id, modelToInsert.genre_id, modelToInsert.stock, modelToInsert.inventory]
     );
   }
 async function deleteOneBook(id) {
     return await db.none(`DELETE FROM book WHERE book_id='${id}'`);
   }
-  
+async function searchAuthorOrTitle(query) {
+    let authors = await db.any(`SELECT * FROM author WHERE first_name LIKE'%${query}%' OR last_name LIKE'%${query}%'`);
+    let titles = await db.any(`SELECT * FROM book WHERE title LIKE'%${query}%'`);
+    return { authors, titles };
+  }  
+
 module.exports = {
     hello,
     getAllBooks,
     registerOneBook,
-    deleteOneBook
+    deleteOneBook,
+    searchAuthorOrTitle
 };

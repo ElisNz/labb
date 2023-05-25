@@ -1,4 +1,4 @@
-const { hello, getAllBooks, registerOneBook, deleteOneBook } = require('../db_context');
+const { hello, getAllBooks, registerOneBook, deleteOneBook, searchAuthorOrTitle } = require('../db_context');
 
 async function getCustomer(req, res) {
     res.status(200).send(await hello());
@@ -27,10 +27,20 @@ async function deleteBook(req, res) {
         res.status(500).send(err);
     }   
 };
+async function search(req, res) {
+    const query = req.params.query;
+    try {
+        let result = await searchAuthorOrTitle(query);
+        res.status(200).send(result);
+    } catch (err) {
+        res.status(500).send(err);
+    }  
+};
 
 module.exports = {
     getCustomer,
     getBooks,
     registerBook,
-    deleteBook
+    deleteBook,
+    search
 }
