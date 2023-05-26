@@ -49,7 +49,6 @@ function register() {
 };
 
 async function remove() {
-    console.log('called');
     const title = document.querySelector('#book_title');
     const options = {
         method: 'DELETE',
@@ -59,5 +58,34 @@ async function remove() {
         body: JSON.stringify({ title: title.value })
       };
     await fetch('http://localhost:3001/delete', options)
+        .catch(err => { console.error(err) })
+};
+
+async function update() {
+    console.log('called');
+
+    const id = document.querySelector('#id');
+    const author = document.querySelector('#author');
+    const title = document.querySelector('#title');
+    const genre = document.querySelector('#genre');
+    const year = document.querySelector('#year');
+    const amount = document.querySelector('#amount');
+
+    const body = {
+        id: parseInt(id.value),
+        author_id: parseInt(author.value),
+        title: title.value,
+        genre_id: parseInt(genre.value),
+        year: parseInt(year.value),
+        inventory: parseInt(amount.value)
+    };
+    const options = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      };
+    await fetch('http://localhost:3001/update', options)
         .catch(err => { console.error(err) })
 };

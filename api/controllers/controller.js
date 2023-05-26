@@ -37,6 +37,16 @@ async function search(req, res) {
     }  
 };
 async function updateBook(req, res) {
+    let data = req.body;
+    console.log(data);
+    for (const [key, value] of Object.entries(data)) {
+        if(value === '') { 
+            delete data[key]
+        } else if(key !== 'title') {
+            data[key] = parseInt(value)
+        }
+      }
+    console.log(data);
     try {
         const data = await updateOneBook(req.body);
         res.status(200).send('Successfully updated book');

@@ -44,6 +44,7 @@ async function updateOneBook(update) {
     const id = update.id;
     delete update.id;
     for (let [key, value] of Object.entries(update)) {
+      if(key)
       if (typeof value == 'string') { value = `'${value}'`};
       db.none(`
         UPDATE book
