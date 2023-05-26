@@ -2,37 +2,34 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
+const socket = require('socket.io');
 
-/* const { Server } = require('socket.io');
-const io = new Server(server);
-
-const chatRoom = "main room";
-const waitingRoom = "waiting room";
-let usersInChat = 0; */
 
 app.use(express.static('public'));
 const port = 3000;
 
 server.listen(port, () => {
   console.log('http server listening on port: ' + port)
-})
-
-/* app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-}); */
-
-/* app.get('/create', (req, res) => {
-  res.sendFile(__dirname + '/create.html');
 });
 
-app.get('/update', (req, res) => {
-  res.sendFile(__dirname + '/update.html');
+var io = socket(server, {
+  cors: {
+      origin: "http://localhost:3000",
+      methods: ["GET", "POST"],
+      credentials: true,
+      transports: ['websocket', 'polling'],
+  },
+  allowEIO3: true
 });
 
-app.get('/delete', (req, res) => {
-  res.sendFile(__dirname + '/delete.html');
-});
+io.on('connection', (socket) => {
 
-app.get('/chat', (req, res) => {
-  res.sendFile(__dirname + '/chat.html');
-}); */
+  console.log('Made socket connection', socket.id);
+
+  socket.on('chat', (data) => {
+
+      io.sockets.emit('chat', data);
+      
+      console.log(data);
+  })
+});
