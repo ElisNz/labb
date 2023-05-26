@@ -1,12 +1,9 @@
-const chatRoom = "main room";
-const waitingRoom = "waiting room";
-let usersInChat = 0;
-var socket = io.connect('http://localhost:3000');
+const socket = io.connect('http://localhost:3000');
 
-var message = document.getElementById('message');
-    handle = document.getElementById('handle'),
-    btn = document.getElementById('send'),
-    output = document.querySelector('.message-box');
+const message = document.getElementById('message');
+const handle = document.getElementById('handle');
+const btn = document.getElementById('send');
+const output = document.querySelector('.message-box');
 
 btn.addEventListener('click', () =>{
     socket.emit('chat', {
